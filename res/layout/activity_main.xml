@@ -1,0 +1,51 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_large"
+        android:text="@string/ready"
+        android:textSize="48dp" />
+
+    <ImageView
+        android:id="@+id/enemyhand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_large"
+        android:src="@drawable/question"
+        android:contentDescription="@string/enemyHand" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/guh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/padding_medium"
+            android:src="@drawable/guh"
+            android:contentDescription="@string/guh" />
+        <ImageButton
+            android:id="@+id/choki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/padding_medium"
+            android:src="@drawable/choki"
+            android:contentDescription="@string/choki" />
+        <ImageButton
+            android:id="@+id/pah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pah"
+            android:contentDescription="@string/pah" />
+    </LinearLayout>
+
+</LinearLayout>
