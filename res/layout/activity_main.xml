@@ -1,8 +1,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/animation_to_hell"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,20 +33,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/padding_medium"
-            android:src="@drawable/guh"
             android:contentDescription="@string/guh" />
         <ImageButton
             android:id="@+id/choki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/padding_medium"
-            android:src="@drawable/choki"
             android:contentDescription="@string/choki" />
         <ImageButton
             android:id="@+id/pah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pah"
             android:contentDescription="@string/pah" />
     </LinearLayout>
 
