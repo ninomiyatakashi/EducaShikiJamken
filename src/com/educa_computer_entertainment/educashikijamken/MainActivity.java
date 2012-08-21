@@ -1,5 +1,7 @@
 package com.educa_computer_entertainment.educashikijamken;
 
+import java.util.Random;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements OnClickListener {
     
     private static final String TAG = "MainActivity";
+    private static final Random random = new Random();
     
     private static final class HAND_TYPE {
         private static final int GUH = 0;
@@ -45,7 +48,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        int enemyHandType = Math.round((float) Math.random() * 2);
+        int enemyHandType = random.nextInt(HAND_BUTTON_ID.length);
         Log.d(TAG, "enemyHand : " + enemyHandType);
         
         hand.setImageResource(HAND_DRAWABLE[enemyHandType]);
