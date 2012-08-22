@@ -16,14 +16,26 @@
         android:text="@string/ready"
         android:textSize="48dp" />
 
-    <ImageView
-        android:id="@+id/enemyhand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_large"
-        android:src="@drawable/question"
-        android:contentDescription="@string/enemyHand" />
-
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/padding_large"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/playerhand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_weight="0.5"
+            android:contentDescription="@string/enemyHand" />
+        <ImageView
+            android:id="@+id/enemyhand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_weight="0.5"
+            android:contentDescription="@string/enemyHand" />
+    </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"

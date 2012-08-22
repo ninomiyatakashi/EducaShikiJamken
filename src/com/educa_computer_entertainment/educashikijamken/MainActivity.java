@@ -14,12 +14,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener {
     
     private static final int MODE_HELL_DRAWCOUNT = 3;
-    private static final int ANIMATION_DURATION = 1000;
+    private static final int ANIMATION_DURATION = 500;
     private static final String TAG    = "MainActivity";
     private static final Random random = new Random();
     
@@ -34,6 +35,8 @@ public class MainActivity extends Activity implements OnClickListener {
         private static final int NORMAL = 1;
     }
     
+    private static final int[] CATS_DRAWABLE         = { R.drawable.guh_cat, R.drawable.choki_cat, R.drawable.pah_cat };
+    private static final int[] PLAYER_CATS_DRAWABLE         = { R.drawable.player_guh, R.drawable.player_choki, R.drawable.player_pah };
     private static final int[] HAND_DRAWABLE         = { R.drawable.guh, R.drawable.choki, R.drawable.pah };
     private static final int[] HAND_BUTTON_ID        = { R.id.guh, R.id.choki, R.id.pah };
     
@@ -49,6 +52,8 @@ public class MainActivity extends Activity implements OnClickListener {
     private Resources          res;
     private TransitionDrawable backgroundAnimation;
     private boolean isFirst = true;
+    private LinearLayout backgroundView;
+    private ImageView playerHandImageView;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,8 +63,10 @@ public class MainActivity extends Activity implements OnClickListener {
         res = getResources();
         
         backgroundAnimation = (TransitionDrawable) findViewById(R.id.background).getBackground();
+        backgroundView = (LinearLayout) findViewById(R.id.background);
         
         computerHandImageView = (ImageView) findViewById(R.id.enemyhand);
+        playerHandImageView = (ImageView) findViewById(R.id.playerhand);
         resultTextView = (TextView) findViewById(R.id.result);
         
         int buttonIndex = 0;
@@ -76,15 +83,19 @@ public class MainActivity extends Activity implements OnClickListener {
     
     @Override
     public void onClick(View v) {
-        int computerHandDrawable = HAND_DRAWABLE[random.nextInt(HAND_BUTTON_ID.length)];
-        Log.d(TAG, "enemyHand : " + computerHandDrawable);
+        int randomValue = random.nextInt(HAND_BUTTON_ID.length);
+        int computerHandDrawable = HAND_DRAWABLE[randomValue];
+        Log.d(TAG, "enemyHand : " + randomValue);
         
-        computerHandImageView.setImageResource(computerHandDrawable);
+//        computerHandImageView.setImageResource(computerHandDrawable);
+        computerHandImageView.setImageResource(CATS_DRAWABLE[randomValue]);
         
         int pushedButtonId = v.getId();
         
         //押されたボタンの画像のリソースIDを取得
-        int pushedButtonDrawable = currentButtonDrawable[Arrays.binarySearch(HAND_BUTTON_ID, pushedButtonId)];
+        int pushedButtonType = Arrays.binarySearch(HAND_BUTTON_ID, pushedButtonId);
+        int pushedButtonDrawable = currentButtonDrawable[pushedButtonType];
+        playerHandImageView.setImageResource(PLAYER_CATS_DRAWABLE[pushedButtonType]);
         
         if (computerHandDrawable == pushedButtonDrawable) {
             resultTextView.setText(res.getString(R.string.draw));
@@ -113,7 +124,7 @@ public class MainActivity extends Activity implements OnClickListener {
         currentMode = mode;
         switch (mode) {
             case MODE.HELL:
-                backgroundAnimation.startTransition(ANIMATION_DURATION);
+//                backgroundAnimation.startTransition(ANIMATION_DURATION);
                 Log.d(TAG,"level : " + backgroundAnimation.getLevel());
                 
                 int hellType = random.nextInt(HAND_BUTTON_ID.length);
@@ -125,8 +136,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 }
                 break;
             case MODE.NORMAL:
-                if(!isFirst)
-                    backgroundAnimation.reverseTransition(ANIMATION_DURATION);
+//                if(!isFirst)
+//                    backgroundAnimation.reverseTransition(ANIMATION_DURATION);
                 
                 isFirst = false;
                 
